@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFC7C937-1104-4B93-B9E7-FFF075744A0C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>app</RootNamespace>
+    <AssemblyName>app</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Core\7zip\Lzma\Common\CRC.cs" />
+    <Compile Include="Core\7zip\Lzma\ICoder.cs" />
+    <Compile Include="Core\7zip\Lzma\LZMA\LzmaBase.cs" />
+    <Compile Include="Core\7zip\Lzma\LZMA\LzmaDecoder.cs" />
+    <Compile Include="Core\7zip\Lzma\LZMA\LzmaEncoder.cs" />
+    <Compile Include="Core\7zip\Lzma\LZ\IMatchFinder.cs" />
+    <Compile Include="Core\7zip\Lzma\LZ\LzBinTree.cs" />
+    <Compile Include="Core\7zip\Lzma\LZ\LzInWindow.cs" />
+    <Compile Include="Core\7zip\Lzma\LZ\LzOutWindow.cs" />
+    <Compile Include="Core\7zip\Lzma\RangeCoder\RangeCoder.cs" />
+    <Compile Include="Core\7zip\Lzma\RangeCoder\RangeCoderBit.cs" />
+    <Compile Include="Core\7zip\Lzma\RangeCoder\RangeCoderBitTree.cs" />
+    <Compile Include="Core\7zip\Lzma\SevenZipHelper.cs" />
+    <Compile Include="Core\7zip\SevenZipCompress.cs" />
+    <Compile Include="Core\CacheFile\DataFile.v2.cs" />
+    <Compile Include="Core\CacheFile\IndexDO.cs" />
+    <Compile Include="Core\CacheFile\DataHost.cs" />
+    <Compile Include="Core\CacheFile\IDataFile.cs" />
+    <Compile Include="Core\CacheFile\Model\PLUGIN.cs" />
+    <Compile Include="Core\CacheFile\Model\USER.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\ControlKit.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\DataFileInfoSelectTop.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\dbAction.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\dbField.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\dbModel.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\dbMsg.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\dbType.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\EditStatus.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\IDbField.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\ItemEditType.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\JoinType.cs" />
+    <Compile Include="Core\CacheFile\Serializer\ContractAttribute.cs" />
+    <Compile Include="Core\CacheFile\Serializer\MemberInfo.cs" />
+    <Compile Include="Core\CacheFile\Serializer\TypeInfo.cs" />
+    <Compile Include="Core\protobuf\BclHelpers.cs" />
+    <Compile Include="Core\protobuf\BufferExtension.cs" />
+    <Compile Include="Core\protobuf\BufferPool.cs" />
+    <Compile Include="Core\protobuf\CallbackAttributes.cs" />
+    <Compile Include="Core\protobuf\Compiler\CompilerContext.cs" />
+    <Compile Include="Core\protobuf\Compiler\CompilerDelegates.cs" />
+    <Compile Include="Core\protobuf\Compiler\Local.cs" />
+    <Compile Include="Core\protobuf\DataFormat.cs" />
+    <Compile Include="Core\protobuf\Extensible.cs" />
+    <Compile Include="Core\protobuf\ExtensibleUtil.cs" />
+    <Compile Include="Core\protobuf\GlobalSuppressions.cs" />
+    <Compile Include="Core\protobuf\Helpers.cs" />
+    <Compile Include="Core\protobuf\IExtensible.cs" />
+    <Compile Include="Core\protobuf\IExtension.cs" />
+    <Compile Include="Core\protobuf\ImplicitFields.cs" />
+    <Compile Include="Core\protobuf\KeyValuePairProxy.cs" />
+    <Compile Include="Core\protobuf\Meta\AttributeMap.cs" />
+    <Compile Include="Core\protobuf\Meta\BasicList.cs" />
+    <Compile Include="Core\protobuf\Meta\CallbackSet.cs" />
+    <Compile Include="Core\protobuf\Meta\MetaType.cs" />
+    <Compile Include="Core\protobuf\Meta\RuntimeTypeModel.cs" />
+    <Compile Include="Core\protobuf\Meta\SubType.cs" />
+    <Compile Include="Core\protobuf\Meta\TypeFormatEventArgs.cs" />
+    <Compile Include="Core\protobuf\Meta\TypeModel.cs" />
+    <Compile Include="Core\protobuf\Meta\ValueMember.cs" />
+    <Compile Include="Core\protobuf\NetObjectCache.cs" />
+    <Compile Include="Core\protobuf\PrefixStyle.cs" />
+    <Compile Include="Core\protobuf\ProtoContractAttribute.cs" />
+    <Compile Include="Core\protobuf\ProtoEnumAttribute.cs" />
+    <Compile Include="Core\protobuf\ProtoException.cs" />
+    <Compile Include="Core\protobuf\ProtoIgnoreAttribute.cs" />
+    <Compile Include="Core\protobuf\ProtoIncludeAttribute.cs" />
+    <Compile Include="Core\protobuf\ProtoMemberAttribute.cs" />
+    <Compile Include="Core\protobuf\ProtoReader.cs" />
+    <Compile Include="Core\protobuf\ProtoWriter.cs" />
+    <Compile Include="Core\protobuf\SerializationContext.cs" />
+    <Compile Include="Core\protobuf\Serializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\ArrayDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\BlobSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\BooleanSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\ByteSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\CharSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\CompiledSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\DateTimeSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\DecimalSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\DefaultValueDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\DoubleSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\EnumSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\FieldDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\GuidSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\ImmutableCollectionDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\Int16Serializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\Int32Serializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\Int64Serializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\IProtoSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\IProtoTypeSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\ISerializerProxy.cs" />
+    <Compile Include="Core\protobuf\Serializers\KeyValuePairDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\ListDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\MemberSpecifiedDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\NetObjectSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\NullDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\ParseableSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\PropertyDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\ProtoDecoratorBase.cs" />
+    <Compile Include="Core\protobuf\Serializers\SByteSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\SingleSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\StringSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\SubItemSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\SurrogateSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\SystemTypeSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\TagDecorator.cs" />
+    <Compile Include="Core\protobuf\Serializers\TimeSpanSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\TupleSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\TypeSerializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\UInt16Serializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\UInt32Serializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\UInt64Serializer.cs" />
+    <Compile Include="Core\protobuf\Serializers\UriDecorator.cs" />
+    <Compile Include="Core\protobuf\SubItemToken.cs" />
+    <Compile Include="Core\protobuf\WireType.cs" />
+    <Compile Include="Core\CacheFile\Serializer\MemberAttribute.cs" />
+    <Compile Include="Core\CacheFile\Serializer\Serializer.cs" />
+    <Compile Include="Core\CacheFile\Serializer\TypeCache.cs" />
+    <Compile Include="Core\CacheFile\Serializer\EnKnownType.cs" />
+    <Compile Include="Core\CacheFile\Serializer\EnMemberType.cs" />
+    <Compile Include="Core\CacheFile\Serializer\PrimitivesConvertion.cs" />
+    <Compile Include="Core\CacheFile\Serializer\ReflectionHelper.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\SearchConfig.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\SearchRequest.cs" />
+    <Compile Include="Core\CacheFile\Interfaces\SearchResult.cs" />
+    <Compile Include="GUI\Controls\ButtonCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\AddNewColorSwatchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ColorConverter.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\ColorDragForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ColorFieldPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ColorPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ColorRenderingHelper.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\ColorSelectedEventArgs.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\ColorSpace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ColorSpaceComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ColorSpaceComponentEventHandler.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\ColorSpaceComponentTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ColorSpaceEventHandler.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\ColorSwatch.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\ColorSwatchPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ColorSwatchSelectedHandler.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\ColorSwatchXml.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\ComponentTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\ComponentUnit.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\DragForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\HexTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\HSB.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\HsbColorSpace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\IColorSpaceStructure.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\Caret.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\Gdi32.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\HitTestValues.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\ImageCapture.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\ImageManipulation.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\ImageManipulationException.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\RasterOperationCodes.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\Resources.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\ShowWindowMessages.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\Trace.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\User32.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\Window.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\Sano.Utility\WindowsMessages.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\RGB.cs" />
+    <Compile Include="GUI\Controls\ColorPicker\RgbColorSpace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ColorPicker\___Const_ColorPicker.cs" />
+    <Compile Include="GUI\Controls\TextBoxCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ListView\ListViewModelItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ListView\CustomListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ListView\Scrollbar\CustomScrollbar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\ListView\Scrollbar\ICustomScrollbar.cs" />
+    <Compile Include="GUI\Controls\ListView\Scrollbar\ScrollbarCollector.cs" />
+    <Compile Include="GUI\Controls\ListView\Scrollbar\ScrollbarStyleHelper.cs" />
+    <Compile Include="GUI\Controls\ListView\Painters\ButtonPainters.cs" />
+    <Compile Include="GUI\Controls\ListView\Painters\Painter.cs" />
+    <Compile Include="GUI\Controls\ListView\Painters\PainterFilterNoText.cs" />
+    <Compile Include="GUI\Controls\ListView\Painters\PainterFilterSize.cs" />
+    <Compile Include="GUI\Controls\ListView\Painters\StackedPainters.cs" />
+    <Compile Include="GUI\Controls\ListView\Painters\SymbolPainter.cs" />
+    <Compile Include="GUI\Controls\ListView\Painters\WindowsStyledButtonPainter.cs" />
+    <Compile Include="GUI\Controls\TabControlCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\UserControlModel.cs" />
+    <Compile Include="GUI\Form\FormLookupItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormColorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormLogger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormItemAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormModelEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormModelAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Controls\TabPageCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GUI\SystemTray.cs" />
+    <Compile Include="Run.cs" />
+    <Compile Include="System\ConcurrentDictionary.cs" />
+    <Compile Include="System\LinqExt.cs" />
+    <Compile Include="System\ReaderWriterLockSlim.cs" />
+    <Compile Include="System\System.Collections.Generic\HashSet.cs" />
+    <Compile Include="System\System.Collections.Generic\ISet.cs" />
+    <Compile Include="System\System.IO.MemoryMappedFiles\FileMapIOException.cs" />
+    <Compile Include="System\System.IO.MemoryMappedFiles\MapViewStream.cs" />
+    <Compile Include="System\System.IO.MemoryMappedFiles\MemoryMappedFile.cs" />
+    <Compile Include="System\System.IO.MemoryMappedFiles\Win32APIs.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Dynamic\System.Linq.Dynamic.v2.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\BinaryExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ConditionalExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ConstantExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ElementInit.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\EmitContext.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\Expression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ExpressionPrinter.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ExpressionTransformer.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ExpressionType.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ExpressionVisitor.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\Expression_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\Extensions.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\InvocationExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\LambdaExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ListInitExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberAssignment.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberBinding.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberBindingType.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberInitExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberListBinding.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberMemberBinding.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MethodCallExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\NewArrayExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\NewExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ParameterExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\TypeBinaryExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\UnaryExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Ext.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Check.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Enumerable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\EnumerableExecutor.cs" />
+    <Compile Include="System\System.Linq\System.Linq\EnumerableExecutor_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\EnumerableQuery.cs" />
+    <Compile Include="System\System.Linq\System.Linq\EnumerableQuery_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Grouping.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IGrouping.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ILookup_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IOrderedEnumerable_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IOrderedQueryable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IOrderedQueryable_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IQueryable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IQueryable_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IQueryProvider.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Lookup.cs" />
+    <Compile Include="System\System.Linq\System.Linq\OrderedEnumerable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\OrderedParallelQuery.cs" />
+    <Compile Include="System\System.Linq\System.Linq\OrderedSequence.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ParallelEnumerable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ParallelExecutionMode.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ParallelMergeOptions.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ParallelQuery.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Queryable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\QueryableEnumerable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\QueryableTransformer.cs" />
+    <Compile Include="System\System.Linq\System.Linq\QuickSort.cs" />
+    <Compile Include="System\System.Linq\System.Linq\SortContext.cs" />
+    <Compile Include="System\System.Linq\System.Linq\SortDirection.cs" />
+    <Compile Include="System\System.Linq\System.Linq\SortSequenceContext.cs" />
+    <Compile Include="System\System.Runtime.CompilerServices\ExecutionScope.cs" />
+    <Compile Include="System\System.Runtime.CompilerServices\ExtensionAttribute.cs" />
+    <Compile Include="System\System.Runtime.CompilerServices\IStrongBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="System\System.Runtime.CompilerServices\StrongBox_T.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="System\System\Action.cs" />
+    <Compile Include="System\System\Func.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DLL\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\7zip\Readme.txt" />
+    <Content Include="Core\protobuf\_ReadMe.txt" />
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorFieldPanelCursor.cur" />
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorSwatches.xml" />
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\AddNewColorSwatchForm.resx">
+      <DependentUpon>AddNewColorSwatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorDragForm.resx">
+      <DependentUpon>ColorDragForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorFieldPanel.resx">
+      <DependentUpon>ColorFieldPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorPanel.resx">
+      <DependentUpon>ColorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorSpace.resx">
+      <DependentUpon>ColorSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorSpaceComponent.resx">
+      <DependentUpon>ColorSpaceComponent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorSpaceComponentTextBox.resx">
+      <DependentUpon>ColorSpaceComponentTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorSwatch.resx">
+      <DependentUpon>ColorSwatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorSwatchPanel.resx">
+      <DependentUpon>ColorSwatchPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\ComponentTextBox.resx">
+      <DependentUpon>ComponentTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\DragForm.resx">
+      <DependentUpon>DragForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\HexTextBox.resx">
+      <DependentUpon>HexTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\HsbColorSpace.resx">
+      <DependentUpon>HsbColorSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\RgbColorSpace.resx">
+      <DependentUpon>RgbColorSpace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Controls\ColorPicker\Sano.Utility\HitTestValues.resx">
+      <DependentUpon>HitTestValues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFC7C937-1104-4B93-B9E7-FFF075744A0C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>app</RootNamespace>
+    <AssemblyName>app</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Core\7zip\Lzma\Common\CRC.cs" />
+    <Compile Include="Core\7zip\Lzma\ICoder.cs" />
+    <Compile Include="Core\7zip\Lzma\LZMA\LzmaBase.cs" />
+    <Compile Include="Core\7zip\Lzma\LZMA\LzmaDecoder.cs" />
+    <Compile Include="Core\7zip\Lzma\LZMA\LzmaEncoder.cs" />
+    <Compile Include="Core\7zip\Lzma\LZ\IMatchFinder.cs" />
+    <Compile Include="Core\7zip\Lzma\LZ\LzBinTree.cs" />
+    <Compile Include="Core\7zip\Lzma\LZ\LzInWindow.cs" />
+    <Compile Include="Core\7zip\Lzma\LZ\LzOutWindow.cs" />
+    <Compile Include="Core\7zip\Lzma\RangeCoder\RangeCoder.cs" />
+    <Compile Include="Core\7zip\Lzma\RangeCoder\RangeCoderBit.cs" />
+    <Compile Include="Core\7zip\Lzma\RangeCoder\RangeCoderBitTree.cs" />
+    <Compile Include="Core\7zip\Lzma\SevenZipHelper.cs" />
+    <Compile Include="Core\7zip\SevenZipCompress.cs" />
+    <Compile Include="Core\DataFile.cs" />
+    <Compile Include="Core\protobuf-net\BclHelpers.cs" />
+    <Compile Include="Core\protobuf-net\BufferExtension.cs" />
+    <Compile Include="Core\protobuf-net\BufferPool.cs" />
+    <Compile Include="Core\protobuf-net\CallbackAttributes.cs" />
+    <Compile Include="Core\protobuf-net\Compiler\CompilerContext.cs" />
+    <Compile Include="Core\protobuf-net\Compiler\CompilerDelegates.cs" />
+    <Compile Include="Core\protobuf-net\Compiler\Local.cs" />
+    <Compile Include="Core\protobuf-net\DataFormat.cs" />
+    <Compile Include="Core\protobuf-net\Extensible.cs" />
+    <Compile Include="Core\protobuf-net\ExtensibleUtil.cs" />
+    <Compile Include="Core\protobuf-net\GlobalSuppressions.cs" />
+    <Compile Include="Core\protobuf-net\Helpers.cs" />
+    <Compile Include="Core\protobuf-net\IExtensible.cs" />
+    <Compile Include="Core\protobuf-net\IExtension.cs" />
+    <Compile Include="Core\protobuf-net\ImplicitFields.cs" />
+    <Compile Include="Core\protobuf-net\KeyValuePairProxy.cs" />
+    <Compile Include="Core\protobuf-net\Meta\AttributeMap.cs" />
+    <Compile Include="Core\protobuf-net\Meta\BasicList.cs" />
+    <Compile Include="Core\protobuf-net\Meta\CallbackSet.cs" />
+    <Compile Include="Core\protobuf-net\Meta\MetaType.cs" />
+    <Compile Include="Core\protobuf-net\Meta\RuntimeTypeModel.cs" />
+    <Compile Include="Core\protobuf-net\Meta\SubType.cs" />
+    <Compile Include="Core\protobuf-net\Meta\TypeFormatEventArgs.cs" />
+    <Compile Include="Core\protobuf-net\Meta\TypeModel.cs" />
+    <Compile Include="Core\protobuf-net\Meta\ValueMember.cs" />
+    <Compile Include="Core\protobuf-net\NetObjectCache.cs" />
+    <Compile Include="Core\protobuf-net\PrefixStyle.cs" />
+    <Compile Include="Core\protobuf-net\ProtoContractAttribute.cs" />
+    <Compile Include="Core\protobuf-net\ProtoEnumAttribute.cs" />
+    <Compile Include="Core\protobuf-net\ProtoException.cs" />
+    <Compile Include="Core\protobuf-net\ProtoIgnoreAttribute.cs" />
+    <Compile Include="Core\protobuf-net\ProtoIncludeAttribute.cs" />
+    <Compile Include="Core\protobuf-net\ProtoMemberAttribute.cs" />
+    <Compile Include="Core\protobuf-net\ProtoReader.cs" />
+    <Compile Include="Core\protobuf-net\ProtoWriter.cs" />
+    <Compile Include="Core\protobuf-net\SerializationContext.cs" />
+    <Compile Include="Core\protobuf-net\Serializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\ArrayDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\BlobSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\BooleanSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\ByteSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\CharSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\CompiledSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\DateTimeSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\DecimalSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\DefaultValueDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\DoubleSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\EnumSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\FieldDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\GuidSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\ImmutableCollectionDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\Int16Serializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\Int32Serializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\Int64Serializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\IProtoSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\IProtoTypeSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\ISerializerProxy.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\KeyValuePairDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\ListDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\MemberSpecifiedDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\NetObjectSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\NullDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\ParseableSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\PropertyDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\ProtoDecoratorBase.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\SByteSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\SingleSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\StringSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\SubItemSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\SurrogateSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\SystemTypeSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\TagDecorator.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\TimeSpanSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\TupleSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\TypeSerializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\UInt16Serializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\UInt32Serializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\UInt64Serializer.cs" />
+    <Compile Include="Core\protobuf-net\Serializers\UriDecorator.cs" />
+    <Compile Include="Core\protobuf-net\SubItemToken.cs" />
+    <Compile Include="Core\protobuf-net\WireType.cs" />
+    <Compile Include="GUI\ButtonCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\TabControlCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormLogger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\FormNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TabPageCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Run.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GUI\SystemTray.cs" />
+    <Compile Include="System\ConcurrentDictionary.cs" />
+    <Compile Include="System\LinqExt.cs" />
+    <Compile Include="System\ReaderWriterLockSlim.cs" />
+    <Compile Include="System\System.Collections.Generic\HashSet.cs" />
+    <Compile Include="System\System.Collections.Generic\ISet.cs" />
+    <Compile Include="System\System.IO.MemoryMappedFiles\FileMapIOException.cs" />
+    <Compile Include="System\System.IO.MemoryMappedFiles\MapViewStream.cs" />
+    <Compile Include="System\System.IO.MemoryMappedFiles\MemoryMappedFile.cs" />
+    <Compile Include="System\System.IO.MemoryMappedFiles\Win32APIs.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Dynamic.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\BinaryExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ConditionalExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ConstantExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ElementInit.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\EmitContext.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\Expression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ExpressionPrinter.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ExpressionTransformer.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ExpressionType.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ExpressionVisitor.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\Expression_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\Extensions.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\InvocationExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\LambdaExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ListInitExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberAssignment.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberBinding.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberBindingType.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberInitExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberListBinding.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MemberMemberBinding.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\MethodCallExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\NewArrayExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\NewExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\ParameterExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\TypeBinaryExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Expressions\UnaryExpression.cs" />
+    <Compile Include="System\System.Linq\System.Linq.Ext.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Check.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Enumerable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\EnumerableExecutor.cs" />
+    <Compile Include="System\System.Linq\System.Linq\EnumerableExecutor_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\EnumerableQuery.cs" />
+    <Compile Include="System\System.Linq\System.Linq\EnumerableQuery_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Grouping.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IGrouping.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ILookup_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IOrderedEnumerable_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IOrderedQueryable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IOrderedQueryable_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IQueryable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IQueryable_T.cs" />
+    <Compile Include="System\System.Linq\System.Linq\IQueryProvider.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Lookup.cs" />
+    <Compile Include="System\System.Linq\System.Linq\OrderedEnumerable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\OrderedParallelQuery.cs" />
+    <Compile Include="System\System.Linq\System.Linq\OrderedSequence.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ParallelEnumerable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ParallelExecutionMode.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ParallelMergeOptions.cs" />
+    <Compile Include="System\System.Linq\System.Linq\ParallelQuery.cs" />
+    <Compile Include="System\System.Linq\System.Linq\Queryable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\QueryableEnumerable.cs" />
+    <Compile Include="System\System.Linq\System.Linq\QueryableTransformer.cs" />
+    <Compile Include="System\System.Linq\System.Linq\QuickSort.cs" />
+    <Compile Include="System\System.Linq\System.Linq\SortContext.cs" />
+    <Compile Include="System\System.Linq\System.Linq\SortDirection.cs" />
+    <Compile Include="System\System.Linq\System.Linq\SortSequenceContext.cs" />
+    <Compile Include="System\System.Runtime.CompilerServices\ExecutionScope.cs" />
+    <Compile Include="System\System.Runtime.CompilerServices\ExtensionAttribute.cs" />
+    <Compile Include="System\System.Runtime.CompilerServices\IStrongBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="System\System.Runtime.CompilerServices\StrongBox_T.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="System\System\Action.cs" />
+    <Compile Include="System\System\Func.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DLL\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\7zip\Readme.txt" />
+    <Content Include="Core\protobuf-net\_ReadMe.txt" />
+    <EmbeddedResource Include="icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
