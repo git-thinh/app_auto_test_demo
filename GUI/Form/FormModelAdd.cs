@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace app.GUI
 {
@@ -19,6 +21,11 @@ namespace app.GUI
         public EventSubmit OnSubmit;
 
         private readonly IDataFile db;
+        Label lbl_MODEL_NAME_KEY_TYPE;
+        TextBoxCustom txt_MODEL_NAME_KEY_TYPE;
+
+        Label lbl_MODEL_NAME_KEY_NAME;
+        TextBoxCustom txt_MODEL_NAME_KEY_NAME;
 
 
         public FormModelAdd(IDataFile _db)
@@ -37,9 +44,18 @@ namespace app.GUI
             boi_DbName.MouseDown += FormMove_MouseDown;
             Label lbl_Name = new Label() { Left = 4, Width = 120, Top = 7, Text = "Model name", AutoSize = false, Height = 20, BackColor = Color.Gray, ForeColor = Color.Black, TextAlign = ContentAlignment.MiddleCenter };
             TextBoxCustom txt_Name = new TextBoxCustom() { Left = 124, Top = 7, Width = 120, WaterMark = "Model name ...", BorderStyle = BorderStyle.FixedSingle, TextAlign = HorizontalAlignment.Center };
-            Label lbl_Caption = new Label() { Left = 252, Top = 7, Width = 120, Text = "Model caption", AutoSize = false, Height = 20, BackColor = Color.Gray, ForeColor = Color.Black, TextAlign = ContentAlignment.MiddleCenter };
-            TextBoxCustom txt_Caption = new TextBoxCustom() { Left = 372, Top = 7, Width = 120, WaterMark = "Model caption ...", BorderStyle = BorderStyle.FixedSingle, TextAlign = HorizontalAlignment.Center };
+            Label lbl_Caption = new Label() { Visible = false, Left = 252, Top = 7, Width = 120, Text = "Model caption1", AutoSize = false, Height = 20, BackColor = Color.Gray, ForeColor = Color.Black, TextAlign = ContentAlignment.MiddleCenter };
+            TextBoxCustom txt_Caption = new TextBoxCustom() { Visible = false, Left = 372, Top = 7, Width = 120, WaterMark = "Model caption ...", BorderStyle = BorderStyle.FixedSingle, TextAlign = HorizontalAlignment.Center };
+
+            lbl_MODEL_NAME_KEY_TYPE = new Label() { Left = 252, Top = 7, Width = 120, Text = "KEY_TYPE", AutoSize = false, Height = 20, BackColor = Color.Gray, ForeColor = Color.Black, TextAlign = ContentAlignment.MiddleCenter };
+            txt_MODEL_NAME_KEY_TYPE = new TextBoxCustom() { Left = 372, Top = 7, Width = 120, WaterMark = "KEY_TYPE", BorderStyle = BorderStyle.FixedSingle, TextAlign = HorizontalAlignment.Center };
+
+            lbl_MODEL_NAME_KEY_NAME = new Label() { Left = 492, Top = 7, Width = 120, Text = "KEY_NAME", AutoSize = false, Height = 20, BackColor = Color.Gray, ForeColor = Color.Black, TextAlign = ContentAlignment.MiddleCenter };
+            txt_MODEL_NAME_KEY_NAME = new TextBoxCustom() { Left = 612, Top = 7, Width = 120, WaterMark = "KEY_NAME", BorderStyle = BorderStyle.FixedSingle, TextAlign = HorizontalAlignment.Center };
+
+
             boi_DbName.Controls.AddRange(new Control[] { lbl_Name, lbl_Caption, txt_Name, txt_Caption ,
+                lbl_MODEL_NAME_KEY_TYPE,txt_MODEL_NAME_KEY_TYPE,lbl_MODEL_NAME_KEY_NAME,txt_MODEL_NAME_KEY_NAME,
                 new ucModelTitle() { Left = 4, Top = 39, Height = 25, Width = fWidth - (SystemInformation.VerticalScrollBarWidth + 20)} });
 
             FlowLayoutPanel boi_Filter = new FlowLayoutPanel()
@@ -160,7 +176,7 @@ namespace app.GUI
                         #region
 
                         if (o.IsKeyAuto) continue;
-                        
+
                         object _coltrol = (fi as ComboBox).SelectedItem;
                         if (_coltrol != null)
                         {
@@ -208,40 +224,40 @@ namespace app.GUI
                             o.JoinField = (ct as ComboboxItem).Value as string;
                     }
                     else if (fi.Name == "caption" + index.ToString())
-                    { 
+                    {
                         o.Caption = (fi as TextBox).Text;
                     }
                     else if (fi.Name == "index" + index.ToString())
-                    { 
+                    {
                         o.IsIndex = (fi as CheckBox).Checked;
                     }
                     else if (fi.Name == "null" + index.ToString())
-                    { 
+                    {
                         o.IsAllowNull = (fi as CheckBox).Checked;
                         if (o.IsKeyAuto || o.IsIndex) o.IsAllowNull = false;
                     }
                     else if (fi.Name == "caption_short" + index.ToString())
-                    { 
+                    {
                         o.CaptionShort = (fi as TextBox).Text;
                     }
                     else if (fi.Name == "des" + index.ToString())
-                    { 
+                    {
                         o.Description = (fi as TextBox).Text;
                     }
                     else if (fi.Name == "mobi" + index.ToString())
-                    { 
+                    {
                         o.Mobi = (fi as CheckBox).Checked;
                     }
                     else if (fi.Name == "tablet" + index.ToString())
-                    { 
+                    {
                         o.Tablet = (fi as CheckBox).Checked;
                     }
                     else if (fi.Name == "duplicate" + index.ToString())
-                    { 
+                    {
                         o.IsDuplicate = (fi as CheckBox).Checked;
                     }
                     else if (fi.Name == "encrypt" + index.ToString())
-                    { 
+                    {
                         o.IsEncrypt = (fi as CheckBox).Checked;
                     }
 
@@ -273,7 +289,7 @@ namespace app.GUI
                                 return;
                             }
                             break;
-                        case ControlKit.LOOKUP: 
+                        case ControlKit.LOOKUP:
                             if (o.JoinType == JoinType.JOIN_MODEL && (string.IsNullOrEmpty(o.JoinModel) || string.IsNullOrEmpty(o.JoinField)))
                             {
                                 MessageBox.Show("Please input field [ " + o.Name + " ] attributed [ JOIN MODEL - JOIN FIELD ]");
@@ -309,7 +325,8 @@ namespace app.GUI
                     Name = dbName.Replace(" ", "_").Trim().ToUpper(),
                     Fields = li.ToArray(),
                 };
-                if (OnSubmit != null) OnSubmit(m);
+                //if (OnSubmit != null) OnSubmit(m);
+                generalApiController(dbName, li);
             }
             else
             {
@@ -317,5 +334,50 @@ namespace app.GUI
             }
         }
 
+        private void generalApiController(string modelName, List<dbField> listFields)
+        {
+            modelName = modelName.ToLower().Trim();
+            if (!modelName.StartsWith("ogen_")) modelName = "ogen_" + modelName;
+
+            foreach (var it in listFields) it.Name = it.Name.ToLower().Trim();
+            string keyType = txt_MODEL_NAME_KEY_TYPE.Text.Trim().ToLower();
+            if (keyType != "int" && keyType != "long" && keyType != "string") {
+                MessageBox.Show("MODEL_NAME_KEY_TYPE are int|long|string ?");
+                return;
+            }
+
+            var api = new oApiControoler()
+            {
+                Name = modelName.ToLower(),
+                keyType = keyType,
+                KeyName = txt_MODEL_NAME_KEY_NAME.Text.Trim().ToLower(),
+                Model = listFields,
+            };
+
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "api");
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            string file = JsonConvert.SerializeObject(api, Formatting.Indented);
+            string fiJson = Path.Combine(path, modelName + ".json");
+            string fiCS = Path.Combine(path, modelName + ".cs");
+            File.WriteAllText(fiJson, file);
+             
+            string con = File.ReadAllText("sample.txt");
+            con = con
+                .Replace("[MODEL_NAME]", api.Name)
+                .Replace("[MODEL_NAME_KEY_TYPE]", api.keyType)
+                .Replace("[MODEL_NAME_KEY_NAME]", api.KeyName);
+            File.WriteAllText(fiCS, con);
+
+            MessageBox.Show("OK");
+        }
     }
+
+    public class oApiControoler
+    {
+        public string Name { set; get; }
+        public string KeyName { set; get; }
+        public string keyType { set; get; }
+        public List<dbField> Model { set; get; }
+    }
+
 }

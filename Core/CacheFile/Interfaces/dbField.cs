@@ -97,6 +97,8 @@ namespace app.Core
         private string _name = string.Empty;
         [ProtoIgnore]
         private string _type = typeof(String).Name;
+
+        [Newtonsoft.Json.JsonIgnore]
         [ProtoIgnore]
         public Type Type { private set; get; }
 

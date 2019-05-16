@@ -394,6 +394,9 @@
   <ItemGroup>
     <Content Include="Core\7zip\Readme.txt" />
     <Content Include="Core\protobuf\_ReadMe.txt" />
+    <Content Include="Sample.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorFieldPanelCursor.cur" />
     <EmbeddedResource Include="GUI\Controls\ColorPicker\ColorSwatches.xml" />
     <EmbeddedResource Include="GUI\Controls\ColorPicker\AddNewColorSwatchForm.resx">

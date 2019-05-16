@@ -1,0 +1,137 @@
+﻿using F88.Message;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Dynamic;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+using F88.MessageWebApi;
+
+namespace F88.Mobility.ApiAppPOS
+{
+    public class [MODEL_NAME]
+    {
+        public int Id { set; get; }
+        public string Name { set; get; }
+    }
+
+    public class [MODEL_NAME]Controller : ApiController
+    {
+        #region [ CONTROLLER ]
+        static [MODEL_NAME]Controller() {
+
+        }
+
+        static CacheSynchronized<[MODEL_NAME]> store = new CacheSynchronized<[MODEL_NAME]>();
+
+        const string typeKey = "[MODEL_NAME_KEY_TYPE]";
+        const string fielKey = "[MODEL_NAME_KEY_NAME]";
+        bool storeUpdate(MESSAGE_TYPE type, string valKey, string jsonObject) => store.Update(type, fielKey, typeKey, valKey, jsonObject);
+
+        // GET api/values/id
+        public Task<HttpResponseMessage> Get(string id)
+        {
+            return processRequest(id, null);
+        }
+
+        ////private static Func<[MODEL_NAME], bool> linqGetObjectByKey(object key)
+        ////{
+        ////    Func<[MODEL_NAME], bool> exp = (t) => true;
+        ////    exp = d => d.Id == Convert.ToInt32(key);
+        ////    return exp;
+        ////}
+
+        // POST api/values 
+        public Task<HttpResponseMessage> Post([NakedBody]object para)
+        {
+            try
+            {
+                string type = "";
+                if (para != null) type = para.GetType().Name;
+                switch (type)
+                {
+                    case "CacheRequestMessage":
+                        IEnumerable<KeyValuePair<string, string>> queryString = this.ActionContext.Request.GetQueryNameValuePairs();
+                        string _functional = queryString.Where(nv => nv.Key == "Method").Select(nv => nv.Value).FirstOrDefault();
+                        return processRequest(_functional, (CacheRequestMessage)para);
+                    case "mRequest":
+                        mRequest request = (mRequest)para;
+                        MESSAGE_TYPE mtype = (MESSAGE_TYPE)request.Type;
+                        switch (mtype)
+                        {
+                            case MESSAGE_TYPE.CACHE_UPDATE_ADD:
+                            case MESSAGE_TYPE.CACHE_UPDATE_DELETE:
+                            case MESSAGE_TYPE.CACHE_UPDATE_EDIT:
+                                storeUpdate(mtype, request.Id, request.Message);
+                                break;
+
+                        }
+                        return Request.Ok(string.Empty);
+                    default:
+                        return Request.ThrewException("Cannot find type data posted");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.ThrewException(ex.Message);
+            }
+        }
+
+        #endregion
+
+        Task<HttpResponseMessage> processRequest(string _functional, CacheRequestMessage para)
+        {
+            try
+            {
+                Task<HttpResponseMessage> resTask = Task.FromResult(Request.CreateResponse(HttpStatusCode.OK, new { }));
+                switch (_functional)
+                {
+                    case "init":
+                        break;
+                    case "get_all":
+                        resTask = get_all();
+                        break;
+                    case "get_by_query":
+                        resTask = get_by_query(para);
+                        break;
+                    default:
+                        break;
+                }
+                return resTask;
+            }
+            catch (Exception ex)
+            {
+                return Request.ThrewException(ex.Message);
+            }
+        }
+
+        Task<HttpResponseMessage> get_all()
+        {
+            try
+            {
+                IEnumerable<[MODEL_NAME]> data = store.getAll();
+                return Request.Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return Request.ThrewException(ex.Message);
+            }
+        }
+
+        Task<HttpResponseMessage> get_by_query(CacheRequestMessage para)
+        {
+            try
+            {
+                IEnumerable<[MODEL_NAME]> data = store.SearchDynamic(para.Condition);
+                return Request.Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return Request.ThrewException(ex.Message);
+            }
+        }
+
+    }
+}
